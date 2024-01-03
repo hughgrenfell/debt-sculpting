@@ -1,6 +1,8 @@
 import Assumptions from './Assumptions';
 import Button from './Button';
 
+import { moneyFormatter } from '../util/Calculator';
+
 export default function SelectedCashFlow({ setProjectState, projectState, onAdd, onDelete }) {
 
     const formattedDate = new Date(projectState.selectedCashFlow.date).toLocaleDateString('en-US', {
@@ -59,6 +61,7 @@ export default function SelectedCashFlow({ setProjectState, projectState, onAdd,
 
                 </div>
                 <p className="mb-4 text-stone-400">{formattedDate}</p>
+                <p>Value: {moneyFormatter.format(projectState.selectedCashFlow.amount)}</p>
                 <p className="text-stone-600 whitespace-pre-wrap">
                     {projectState.selectedCashFlow.description}
                 </p>

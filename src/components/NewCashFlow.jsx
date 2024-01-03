@@ -3,9 +3,10 @@ import Button from './Button';
 import Modal from './Modal';
 import { useRef } from 'react';
 
-export default function NewCashFlow({ setProjectState, projectState }) {
+export default function NewCashFlow({ setProjectState }) {
 
     const titleRef = useRef();
+    const amountRef = useRef();
     const descriptionRef = useRef();
     const dateRef = useRef();
     const modalRef = useRef();
@@ -22,10 +23,11 @@ export default function NewCashFlow({ setProjectState, projectState }) {
     function handleSave() {
 
         const enteredTitle = titleRef.current.value;
+        const enteredAmount = amountRef.current.value;
         const enteredDescription = descriptionRef.current.value;
         const enteredDate = dateRef.current.value;
 
-        if(enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredDate.trim() === '') {
+        if(enteredTitle.trim() === '' || enteredAmount.trim() === '' || enteredDescription.trim() === '' || enteredDate.trim() === '') {
             modalRef.current.open();
             return;
         } else {
@@ -36,6 +38,8 @@ export default function NewCashFlow({ setProjectState, projectState }) {
                     cashFlows: [...prevProjectState.cashFlows, {
                         id: `Project${prevProjectState.newId}`, 
                         title: enteredTitle,
+                        amount: enteredAmount,
+                        assumptions: [],
                         description: enteredDescription,
                         date: enteredDate,
                     }]
@@ -73,6 +77,7 @@ export default function NewCashFlow({ setProjectState, projectState }) {
                 <div>
                     <>
                         <Input label="Title" ref={ titleRef }/>
+                        <Input label="Amout" ref={ amountRef } />
                         <Input label="Description" ref={ descriptionRef } textarea/>
                         <Input label="Due Date" ref={ dateRef } type="date"/> 
                     </>

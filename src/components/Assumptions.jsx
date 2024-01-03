@@ -3,8 +3,8 @@ import NewAssumption from "./NewAssumption"
 export default function Assumptions({assumptions, onAdd, onDelete}) {
     return(
         <section>
-            <h2 className="text=2xl font-bold text-stone-700 mb-4">Tasks</h2>
-            <NewAssumption onAdd={ onAdd }/>
+            <h2 className="text=2xl font-bold text-stone-700 mb-4">Assumptions</h2>
+            <NewAssumption onAdd={ onAdd } onDelete={ onDelete } />
             {
                 assumptions.length === 0 &&
                 <p className="text-stone-800 my-4">
